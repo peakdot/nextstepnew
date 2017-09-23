@@ -32,9 +32,9 @@ function setclock(time, type){
 }
 
 function setclockstart(time, type){
-	$('#'+type+'-timepincircle1').attr('transform','rotate('+time*15+' 100 100)');
-	$('#'+type+'-timepin1').attr('transform','rotate('+time*15+' 100 100)');
-	$('#'+type+'-detailstart').attr('transform','rotate('+time*15+' 100 100)');
+	$('#'+type+'-timepincircle1').attr('transform','rotate('+time*15+' 150 150)');
+	$('#'+type+'-timepin1').attr('transform','rotate('+time*15+' 150 150)');
+	$('#'+type+'-detailstart').attr('transform','rotate('+time*15+' 150 150)');
 	if(currtptimestart%2==1)
 		$('#'+type+'-tp-'+currtptimestart).attr('fill','#e0e0e0');
 	else
@@ -45,9 +45,9 @@ function setclockstart(time, type){
 }
 
 function setclockend(time, type){
-	$('#'+type+'-timepincircle2').attr('transform','rotate('+time*15+' 100 100)');
-	$('#'+type+'-timepin2').attr('transform','rotate('+time*15+' 100 100)');
-	$('#'+type+'-detailend').attr('transform','rotate('+time*15+' 100 100)');
+	$('#'+type+'-timepincircle2').attr('transform','rotate('+time*15+' 150 150)');
+	$('#'+type+'-timepin2').attr('transform','rotate('+time*15+' 150 150)');
+	$('#'+type+'-detailend').attr('transform','rotate('+time*15+' 150 150)');
 	if(currtptimeend%2==1)
 		$('#'+type+'-tp-'+currtptimeend).attr('fill','#e0e0e0');
 	else

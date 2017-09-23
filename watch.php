@@ -2,87 +2,13 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link type="text/css" href="css/nextstep.css" rel="stylesheet">
+	<link type="text/css" href="css/nswatch.css" rel="stylesheet">
 	<link type="text/css" href="css/filter.css" rel="stylesheet">
 	<link rel="icon" href="nextstepg.png">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<title>NextStep</title>
 </head>
 <body>
-
-	<nav>
-		<a href="index.php" class="title"><img src="nextstepw.png" class="logo"><span>Nextstep</span></a>
-		<a href="#menu-nonuser" class="nav-item r min menu"><i class="material-icons md-36">more_vert</i></a>
-		<a href="#login" class="nav-item r modal-trigger"><i class="material-icons md-36">account_circle</i><span>Нэвтрэх</span></a>
-		<a href="#insert-job" class="nav-item r modal-trigger"><i class="material-icons md-36">add</i><span>Зар нэмэх</span></a>
-		<a href="#!" class="nav-item r search-button"><i class="material-icons md-36">search</i><span>Хайх</span></a>
-		<a href="#!" class="nav-item l active" id="list_button"><i class="material-icons md-36">view_list</i><span>Жагсаалт</span></a>
-		<a href="#!" class="nav-item l" id="map_button"><i class="material-icons md-36">gps_fixed</i><span>Газрын зураг</span></a>
-	</nav>
-
-	<div class="search-field">
-		<div class="close-search-field"><i class="material-icons md-24">expand_less</i></div>
-		<div class="title">
-			<span>Хайх</span>
-		</div>
-
-		<div class="filter-add-field">
-			<i class="material-icons md-24">add</i>
-			<input id="input-requirement" type="text-area" name="username" list="search-value-suggesstor" placeholder="Зөөгч, цалин 50000-с дээш г.м" autocomplete="off">
-		</div>
-
-		<div class="filter-objs">
-			<div class="filter-obj">
-				<div class="remove-filter-obj">
-					<i class="material-icons md-24">cancel</i>
-				</div>
-
-				<div class="filter-obj-icon">
-					<i class="material-icons md-24">school</i>
-				</div>
-				<span>Хохо</span>
-			</div>
-			<div class="filter-obj">
-				<div class="remove-filter-obj">
-					<i class="material-icons md-24">cancel</i>
-				</div>
-
-				<div class="filter-obj-icon">
-					<i class="material-icons md-24">school</i>
-				</div>
-				<span>Өдрийн цалин 10000-с дээш</span>
-			</div>
-			<div class="filter-obj">
-				<div class="remove-filter-obj">
-					<i class="material-icons md-24">cancel</i>
-				</div>
-
-				<div class="filter-obj-icon">
-					<i class="material-icons md-24">school</i>
-				</div>
-				<span>Даваа 10:00-13:20</span>
-			</div>
-			<div class="filter-obj">
-				<div class="remove-filter-obj">
-					<i class="material-icons md-24">cancel</i>
-				</div>
-
-				<div class="filter-obj-icon">
-					<i class="material-icons md-24">school</i>
-				</div>
-				<span>Ажлын өдрүүдэд 10:00-13:20</span>
-			</div>
-		</div>
-		<button class="button flat orange">
-			<i class="material-icons md-24">clear</i>
-			<span>Арилгах</span>
-		</button>
-		<button class="button raised">
-			<i class="material-icons md-24">search</i>
-			<span>Хайх</span>
-		</button>
-	</div>
-
 	<ul id="menu-nonuser" class="menu-content">
 		<li><a href="#login" class="modal-trigger"><i class="material-icons md-36">person_outline</i>Нэвтрэх</a></li>
 		<li><a href="#!" class=""><i class="material-icons md-36">info_outline</i>Тухай</a></li>
@@ -93,87 +19,7 @@
 		<a href="#!" class="search-button orange"><i class="material-icons md-24">search</i></a>
 	</div>
 
-
-	<div id="login" class="modal">
-		<div class="close-modal-button"><i class="material-icons md-24">close</i></div>
-		<div class="body">
-			<div class="header">
-				<div id="loginimg">
-					<img src="imgs/login.png">
-				</div>	
-			</div>
-			<div class="info">
-				<div class="title">Нэвтрэх</div>
-				<div class="info-item">
-					<div class="input-field col-12">
-						<input type="text" name="username">
-						<label for="username">Хэрэглэгчийн нэр эсвэл и-мэйл хаяг</label>
-						<div class="bot-line"></div>
-					</div>
-					<div class="input-field col-12">
-						<input type="text" name="password">
-						<label for="password">Нууц үг</label>
-						<div class="bot-line"></div>
-					</div>
-				</div>
-				<div class="info-item">
-					<center>				
-						<a href="#!" class="button raised">Нэвтрэх</a>
-						<a href="#signin" class="button flat modal-trigger">Бүртгүүлэх</a>
-					</center>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="signin" class="modal">
-		<div class="close-modal-button"><i class="material-icons md-24">close</i></div>
-		<div class="body">
-			<div class="header">
-				<div id="loginimg">
-					<img src="imgs/login.png">
-				</div>	
-			</div>
-			<div class="info">
-				<div class="title">Бүртгүүлэх</div>
-				<div class="info-item">
-					<div class="input-field col-12">
-						<input type="text" name="fname">
-						<label for="fname">Нэр</label>
-						<div class="bot-line"></div>
-					</div>
-					<div class="input-field col-12">
-						<input type="text" name="lname">
-						<label for="lname">Овог</label>
-						<div class="bot-line"></div>
-					</div>
-					<div class="input-field col-12">
-						<input type="text" name="username">
-						<label for="username">И-мэйл хаяг</label>
-						<div class="bot-line"></div>
-					</div>
-					<div class="input-field col-12">
-						<input type="text" name="password">
-						<label for="password">Нууц үг</label>
-						<div class="bot-line"></div>
-					</div>
-					<div class="input-field col-12">
-						<input type="text" name="repassword">
-						<label for="repassword">Нууц үгээ дахин оруулна уу</label>
-						<div class="bot-line"></div>
-					</div>
-				</div>
-				<div class="info-item">
-					<center>				
-						<a class="button raised">Бүртгүүлэх</a>
-						<a href="#login" class="button flat modal-trigger">Буцах</a>
-					</center>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="job-info" class="modal">
+	<div id="job-info" class="modal active">
 		<div class="head">
 			<div class="close-modal-button"><i class="material-icons md-24">arrow_back</i></div>
 		</div>
@@ -459,66 +305,9 @@
 
 	<div id="overlay1" class="overlay"></div>
 
-	<div id="main-content">
-		<div id="map"></div>
-
-		<div id="list" class="active">
-			<div class="lists">
-				<div class="list-item">
-					<a href="#!" class="head">
-						<div class="imgcontainer">
-							<img src="imgs/1000000017/201703140858_1ko5ItS3gbd4mrxuhjKaEzZQfsCAJT.jpg">
-						</div>
-					</a>
-					<div class="body">
-						<a href="#!" class="header">Цахилгаанчин</a>
-						<p>Ажиллах газрын нэр</p>
-						<p>Өдрийн 20'000 - 30'000</p>
-						<p>Бүтэн цагийн</p>
-					</div>
-					<a href="#!" class="list-item-save"><span>Хадгалах</span><i class="material-icons md-36">save</i></a>
-					<a href="#job-info" class="list-item-detail modal-trigger"><span>Дэлгэрэнгүй</span><i class="material-icons md-36">fullscreen</i></a>
-				</div>
-				<div href="#!" class="list-item">
-					<a href="#!" class="head">
-						<div class="imgcontainer">
-							<img src="imgs/1000000017/201703140858_1ko5ItS3gbd4mrxuhjKaEzZQfsCAJT.jpg">
-						</div>
-					</a>
-					<div class="body">
-						<a class="header">Цахилгаанчин</a>
-						<p>Ажиллах газрын нэр</p>
-						<p>Өдрийн 20'000 - 30'000</p>
-						<p>Бүтэн цагийн</p>
-					</div>
-					<a href="#!" class="list-item-save"><span>Хадгалах</span><i class="material-icons md-36">save</i></a>
-					<a href="#job-info" class="list-item-detail modal-trigger"><span>Дэлгэрэнгүй</span><i class="material-icons md-36">fullscreen</i></a>
-				</div>
-				<div class="list-item">
-					<a href="#!" class="head">
-						<div class="imgcontainer">
-							<img src="imgs/1000000017/201703140858_1ko5ItS3gbd4mrxuhjKaEzZQfsCAJT.jpg">
-						</div>
-					</a>
-					<div class="body">
-						<a href="#!" class="header">Цахилгаанчин</a>
-						<p>Ажиллах газрын нэр</p>
-						<p>Өдрийн 20'000 - 30'000</p>
-						<p>Бүтэн цагийн</p>
-					</div>
-					<a href="#!" class="list-item-save"><span>Хадгалах</span><i class="material-icons md-36">save</i></a>
-					<a href="#job-info" class="list-item-detail modal-trigger"><span>Дэлгэрэнгүй</span><i class="material-icons md-36">fullscreen</i></a>
-				</div>
-			</div>
-		</div>
-	</div> 
-
 	<script type = "text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script type = "text/javascript" src = "js/map.js"></script>
 	<script type = "text/javascript" src = "js/ns.js"></script>
 	<script type="text/javascript" src="js/filter.js"></script>
-
-	<script async defer	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDapiQf8_eNvGEudEZDZjnJ2H3hOSn8eWo"></script>
 
 </body>
 </html>

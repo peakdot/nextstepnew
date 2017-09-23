@@ -7,7 +7,7 @@ var markerIcon = "imgs/markerf.png";
 var infoWindow;
 var xml;
 
-function initialize() {
+function map_initialize() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
     center: {lat: 47.9166, lng: 106.9175},
