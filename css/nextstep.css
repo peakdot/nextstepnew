@@ -48,6 +48,13 @@ li {
 	outline: none;
 }
 
+.errormsg {
+	display: none;
+	font-size: 14px;
+	color: red;
+	padding: 0px 0 10px 0;
+}
+
 .input-field{
 	display: inline-block;
 	position: relative;
@@ -257,6 +264,10 @@ nav {
 	vertical-align: middle;
 	z-index: 1;
 	text-align: center;
+	transition: all 0.5s;
+	-o-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-webkit-transition: all 0.5s;
 }
 
 .nav-item{
@@ -333,6 +344,34 @@ nav .title span {
 
 .nav-item:active {
 	background-color: rgba(0, 0, 0, 0.12);	
+}
+
+#profile-pic {
+	display: inline-block;
+}
+
+.circle {
+	border-radius: 50%;
+	height: 100%;
+	vertical-align: middle;
+	padding: 6px;
+}
+
+.circle img {
+	max-height: 100%;
+}
+
+#doneButton{
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	opacity: 0; 
+	visibility: hidden;
+	z-index: 1;
+	transition: opacity 0.2s;
+	-o-transition: opacity 0.2s;
+	-moz-transition: opacity 0.2s;
+	-webkit-transition: opacity 0.2s;
 }
 
 .search-field {
@@ -681,13 +720,15 @@ nav .title span {
 
 .modal-button {
 	display: inline-block;
+	cursor: pointer;
 	float: right;
 	background-color: rgba(0, 0, 0, 0);
 	font-size: 14px;
+	font-family: "Roboto";
 	color: white;
 	line-height: 56px;
 	padding: 0 5px 0 5px;
-	cursor: pointer;
+	border: none;
 	z-index: 5;
 	transition: all 0.2s;
 	-o-transition: all 0.2s;
@@ -1019,7 +1060,29 @@ nav .title span {
 	color: #3F51B5;
 }
 
-.list-item-detail span, .list-item-save span{
+.list-item-detail span, .list-item-save span, .list-item-remove span{
+	display: none;
+}
+
+.list-item-remove {
+	cursor: pointer;	 
+	display: flex;
+	align-items: center; 
+	position: absolute;
+	top: 8px;
+	right: 120px;
+	color: rgba(0, 0, 0, 0.56);
+	transition: all 0.2s;
+	-o-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-webkit-transition: all 0.2s;
+}
+
+.list-item-remove:hover {
+	color: red;
+}
+
+.list-item-remove span, .list-item-remove span{
 	display: none;
 }
 
@@ -1094,14 +1157,14 @@ nav .title span {
 		width: 350px;
 	}
 
-	#signin {
+	#signup {
 		max-height: 90%;
 		height: auto;
 		width: 350px;
 	}
 
 
-	.list-item-detail span, .list-item-save span{
+	.list-item-detail span, .list-item-save span,  .list-item-remove span{
 		display: flex;
 	}
 }

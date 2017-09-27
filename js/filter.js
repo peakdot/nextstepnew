@@ -13,6 +13,70 @@ function showFilter(){
 	}
 }
 
+function setWeek(bindays, type) {
+	console.log(bindays);
+	if(bindays % 2 == 1) {
+		$("#"+type+"-mon").addClass("active");
+		bindays --;
+	} else {
+		$("#"+type+"-mon").removeClass("active");		
+	}
+	bindays = (bindays / 2);
+	console.log(bindays);
+
+	if(bindays % 2 == 1) {
+		$("#"+type+"-tue").addClass("active");
+		bindays --;
+	} else {
+		$("#"+type+"-tue").removeClass("active");		
+	}
+	bindays = (bindays / 2).toFixed(0);
+	console.log(bindays);
+
+	if(bindays % 2 == 1) {
+		$("#"+type+"-wed").addClass("active");
+		bindays --;
+	} else {
+		$("#"+type+"-wed").removeClass("active");		
+	}
+	bindays = (bindays / 2).toFixed(0);
+	console.log(bindays);
+
+	if(bindays % 2 == 1) {
+		$("#"+type+"-thu").addClass("active");
+		bindays --;
+	} else {
+		$("#"+type+"-thu").removeClass("active");		
+	}
+	bindays = (bindays / 2).toFixed(0);
+	console.log(bindays);
+
+	if(bindays % 2 == 1) {
+		$("#"+type+"-fri").addClass("active");
+		bindays --;
+	} else {
+		$("#"+type+"-fri").removeClass("active");		
+	}
+	bindays = (bindays / 2).toFixed(0);
+	console.log(bindays);
+
+	if(bindays % 2 == 1) {
+		$("#"+type+"-sat").addClass("active");
+		bindays --;
+	} else {
+		$("#"+type+"-sat").removeClass("active");		
+	}
+	bindays = (bindays / 2).toFixed(0);
+	console.log(bindays);
+
+	if(bindays % 2 == 1) {
+		$("#"+type+"-sun").addClass("active");
+		bindays --;
+	} else {
+		$("#"+type+"-sun").removeClass("active");		
+	}
+}
+
 function activatetp(t, type){
 	if(t==0){
 		$('#'+type+'-tp-time1').addClass('selecteded');
@@ -42,6 +106,10 @@ function setclockstart(time, type){
 	$('#'+type+'-tp-'+time).attr('fill','white');
 	currtptimestart = time
 	$('#'+type+'-tp-time1').html(currtptimestart+':00');
+
+	if(type == "insert-job") {
+		$("#startTime").val(currtptimestart);
+	}
 }
 
 function setclockend(time, type){
@@ -55,6 +123,10 @@ function setclockend(time, type){
 	$('#'+type+'-tp-'+time).attr('fill','white');
 	currtptimeend = time
 	$('#'+type+'-tp-time2').html(currtptimeend+':00');
+
+	if(type == "insert-job") {
+		$("#endTime").val(currtptimeend);
+	}
 }
 
 function getfilterparas(){
