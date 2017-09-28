@@ -113,11 +113,12 @@ function &getFromDB($tablename, $columnnames, $condition = "1=1"){
 		return $res;
 	} else {
 		//Replace
+		echo "SELECT ".$subquery." FROM ".$tablename." WHERE ".$condition;
 		die("Failed to retrieve data: ".$conn->error);
 	}
 }
 
-function &editFromDB($tablename, $columnnames, $data, $condition = "1=1"){
+function editFromDB($tablename, $columnnames, $data, $condition = "1=1"){
 	global $conn;
 
 	initcon();
@@ -142,7 +143,7 @@ function &editFromDB($tablename, $columnnames, $data, $condition = "1=1"){
 	}
 }
 
-function &removeFromDB($tablename, $condition = "1=1"){
+function removeFromDB($tablename, $condition = "1=1"){
 	global $conn;
 
 	initcon();
@@ -215,7 +216,7 @@ function &getFromDBSecure($tablename, $columnnames, $inConditionColumnnames, $co
 	return $res;
 }
 
-function createDatatypeString(&$tablename, &$columnnames){
+function &createDatatypeString(&$tablename, &$columnnames){
 	global $conn;
 	initcon();
 
@@ -247,7 +248,6 @@ function createDatatypeString(&$tablename, &$columnnames){
 		}
 	} else {
 		//Replace
-		echo "SELECT COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '".$tablename."';<br>";
 		die("Failed to retrieve table column info: ".$conn->error);
 	}
 
