@@ -104,7 +104,7 @@ function &getFromDB($tablename, $columnnames, $condition = "1=1"){
 
 	$subquery = implode(",", $columnnames);
 
-	if($result = $conn->query("SELECT ".$subquery." FROM ".$tablename." WHERE ".$condition.";")){
+	if($result = $conn->query("SELECT ".$subquery." FROM ".$tablename." WHERE ".$condition)){
 		$res = $result->fetch_all(MYSQLI_NUM); 
 		
 		$result->close();
@@ -113,7 +113,6 @@ function &getFromDB($tablename, $columnnames, $condition = "1=1"){
 		return $res;
 	} else {
 		//Replace
-		echo "SELECT ".$subquery." FROM ".$tablename." WHERE ".$condition;
 		die("Failed to retrieve data: ".$conn->error);
 	}
 }
