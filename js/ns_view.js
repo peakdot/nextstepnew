@@ -580,7 +580,7 @@ function feed_job_info_modal(job) {
 	jobinfo_modal = $("#job-info");
 	jobinfo_modal.find("#jinfo-jobName").html(job[1]);
 	jobinfo_modal.find("#jinfo-orgName").html(job[2]);
-	jobinfo_modal.find("#jinfo-orgLogo").attr("src", "imgs/" + job[3]);
+	jobinfo_modal.find("#jinfo-orgLogo").attr("src", "../../imgs/" + job[3]);
 	jobinfo_modal.find("#jinfo-salary").html(job[4] + " " + job[5]);
 	setclockstart(parseInt(job[6]), "info");
 	setclockend(parseInt(job[7]), "info");

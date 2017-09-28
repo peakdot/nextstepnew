@@ -23,12 +23,12 @@ if(!isset($_SESSION["usertype"]) || !isset($_SESSION["id"])) {
 
 	<nav>
 		<a href = "index.php" class = "title"><img src = "nextstepw.png" class = "logo"><span>Nextstep</span></a>
-		<a href = "#menu" class = "nav-item r min menu"><?php echo $userLogged? '<div class="circle"><img src="imgs/'.$_SESSION["accpro"].'"/></div>':'<i class = "material-icons md-36">account_circle</i>' ?></a>
+		<a href = "#menu" class = "nav-item r min menu"><?php echo $userLogged? '<div class="circle"><img src="../../imgs/'.$_SESSION["accpro"].'"/></div>':'<i class = "material-icons md-36">account_circle</i>' ?></a>
 		<?php 
 		if(!$userLogged) {
 			echo '<a href = "#login" class = "nav-item r modal-trigger"><i class = "material-icons md-36">account_circle</i><span>Нэвтрэх</span></a>';
 		} else {
-			echo '<a href = "#menu" class = "nav-item r menu"><div id = "profile-pic" class = "circle"><img src="imgs/'.$_SESSION["accpro"].'"/></div><span>'.$_SESSION["fname"].'</span></a>';
+			echo '<a href = "#menu" class = "nav-item r menu"><div id = "profile-pic" class = "circle"><img src="../../imgs/'.$_SESSION["accpro"].'"/></div><span>'.$_SESSION["fname"].'</span></a>';
 		}
 		?>
 		<a href = <?php echo $userLogged?'"#insert-job"':'"#login"'?> class = "nav-item r modal-trigger"><i class = "material-icons md-36">add</i><span>Зар нэмэх</span></a>

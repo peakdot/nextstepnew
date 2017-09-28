@@ -17,8 +17,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 } 
 
 function insertJob() {
-	$regEmployer = 0;
-	$regCompany = 0;
+	$regEmployer = 1;
+	$regCompany = 1;
+	$regType = 0;
 
 	$orgName = get_input_ex("orgName",1,false);
 	$jobName = get_input_ex("jobName",1,false);
@@ -34,11 +35,13 @@ function insertJob() {
 	$gender = get_input_ex("gender",0,true);
 	$age = get_input_ex("age",0,true);
 	$edu = get_input_ex("edu",0,true);
-	$regType = $_SESSION["usertype"];
-	if($regType == 0) {
-		$regEmployer = $_SESSION["id"];
-	} else {
-		$regCompany = $_SESSION["id"];		
+	if(isset($_SESSION)) { 
+		$regType = $_SESSION["usertype"];
+		if($regType == 0) {
+			$regEmployer = $_SESSION["id"];
+		} else {
+			$regCompany = $_SESSION["id"];		
+		}
 	}
 	$mon = get_input_ex("mon",0,true);
 	$tue = get_input_ex("tue",0,true);
@@ -49,7 +52,7 @@ function insertJob() {
 	$sun = get_input_ex("sun",0,true);
 	$week = (int)$mon*1+(int)$tue*2+(int)$wed*4+(int)$thu*8+(int)$fri*16+(int)$sat*32+(int)$sun*64;
 
-	$accpro = uploadImage("coverimg", 617, 160, "imgs/");
+	$accpro = uploadImage("coverimg", 617, 160, "../../imgs/");
 
 	$data = array($jobName, $orgName, $accpro, $salaryType, $salary, $startTime, $endTime, $week, $lat, $lng, $email, $phone1, $phone2, $gender, $age, $edu, $regEmployer, $regCompany, $regType);
 

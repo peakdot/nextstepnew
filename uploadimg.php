@@ -17,7 +17,7 @@ function uploadImage($file, $maxwidth, $maxheight, $destination) {
 
     // Check if file already exists
     if (!file_exists($_FILES[$file]["tmp_name"])) {
-        return "picincerr1";
+        return "defaultjob.png";
     }
 
     // Check file size
