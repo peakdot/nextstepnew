@@ -530,6 +530,7 @@ if(!isset($_SESSION["usertype"]) || !isset($_SESSION["id"])) {
 
 		<div id = "list" class = "active">
 			<div class = "lists">
+			<span><?php print_r($_SESSION);?></span>
 			</div>
 		</div>
 	</div> 
