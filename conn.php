@@ -247,7 +247,7 @@ function createDatatypeString(&$tablename, &$columnnames){
 		}
 	} else {
 		//Replace
-		print_r($result);
+		echo "SELECT COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '".$tablename."';<br>"
 		die("Failed to retrieve table column info: ".$conn->error);
 	}
 
