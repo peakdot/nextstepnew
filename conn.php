@@ -219,6 +219,7 @@ function createDatatypeString(&$tablename, &$columnnames){
 	global $conn;
 	initcon();
 
+	$result = null;
 	$datatype = "";
 	if($result = $conn->query("SELECT COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '".$tablename."';")) {
 		$res = $result->fetch_all(MYSQLI_NUM); 
@@ -246,6 +247,7 @@ function createDatatypeString(&$tablename, &$columnnames){
 		}
 	} else {
 		//Replace
+		print_r($result);
 		die("Failed to retrieve table column info: ".$conn->error);
 	}
 
