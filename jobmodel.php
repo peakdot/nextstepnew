@@ -55,9 +55,9 @@ function insertJob() {
 	$id = insertToDB("jobs", array("_jobName", "_orgName", "_orgLogo", "_salaryType", "_salary", "_startTime", "_endTime", "_week", "_lat", "_lng", "_email", "_phone1", "_phone2", "_gender", "_age", "_edu", "_regEmployerId", "_regCompanyId", "_regType"), array($data));
 
 	if($id === false)
-		return "false".$accpro;
+		return "false".$accpro.$id;
 	
-	return "true".$accpro;
+	return "true".$accpro.$id;
 }
 
 ?>
