@@ -8,7 +8,6 @@ require("test_input.php");
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$type = get_input_post("type", 0, false);
 	if($type == '0') {
-		echo "Hello im jobmodel";
 		echo insertJob();
 	}
 } 
@@ -50,6 +49,7 @@ function insertJob() {
 	$week = (int)$mon*1+(int)$tue*2+(int)$wed*4+(int)$thu*8+(int)$fri*16+(int)$sat*32+(int)$sun*64;
 
 	$accpro = uploadImage("coverimg", 617, 160, "imgs/");
+	echo "Hello im jobmodel";
 
 	$data = array($jobName, $orgName, $accpro, $salaryType, $salary, $startTime, $endTime, $week, $lat, $lng, $email, $phone1, $phone2, $gender, $age, $edu, $regEmployer, $regCompany, $regType);
 
