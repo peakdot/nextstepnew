@@ -8,11 +8,7 @@ require("test_input.php");
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$type = get_input_post("type", 0, false);
 	if($type == '0') {
-		if(insertJob()) {
-			echo "Insert Successful";
-		} else {
-			echo "Ажил оруулахад алдаа гарлаа.";
-		}
+		echo insertJob();
 	}
 } 
 
@@ -59,9 +55,9 @@ function insertJob() {
 	$id = insertToDB("jobs", array("_jobName", "_orgName", "_orgLogo", "_salaryType", "_salary", "_startTime", "_endTime", "_week", "_lat", "_lng", "_email", "_phone1", "_phone2", "_gender", "_age", "_edu", "_regEmployerId", "_regCompanyId", "_regType"), array($data));
 
 	if($id === false)
-		return false;
+		return "false".$accpro;
 	
-	return true;
+	return "true".$accpro;
 }
 
 ?>
