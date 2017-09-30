@@ -8,6 +8,7 @@ require("test_input.php");
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$type = get_input_post("type", 0, false);
 	if($type == '0') {
+		echo "Hello im jobmodel";
 		echo insertJob();
 	}
 } 
