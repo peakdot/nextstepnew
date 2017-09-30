@@ -39,6 +39,7 @@ function uploadImage($file, $maxwidth, $maxheight, $destination) {
     }
 
     echo "9 ";
+    print_r(function_exists('imagecreatetruecolor'));
     // if everything is ok, try to upload file
     if (saveImage($_FILES[$file]["tmp_name"], $imageFileType, $maxwidth, $maxheight, $destination.$target_file)){
     echo "10 ";
