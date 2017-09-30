@@ -317,7 +317,7 @@ if(!isset($_SESSION["usertype"]) || !isset($_SESSION["id"])) {
 		</div>
 	</div>
 
-	<form id = "insert-job-form" method = "post" accept-charset="utf-8" enctype="multipart/form-data">
+	<form id = "insert-job-form" action = "jobmodel.php" method = "post" accept-charset="utf-8" enctype="multipart/form-data">
 		<input type="hidden" name="type" value="0">
 		<div id = "insert-job" class = "modal">
 			<div class = "head">

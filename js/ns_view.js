@@ -329,7 +329,7 @@ function initialize(userType = 0) {
         });
     });
 
-	$("#insert-job-form").submit(function(event){
+	/*$("#insert-job-form").submit(function(event){
 
         // Prevent default posting of form - put here to work in case of errors
         event.preventDefault();
@@ -400,7 +400,7 @@ function initialize(userType = 0) {
             $inputs.prop("disabled", false);
         });
 
-    });
+    });*/
 
 }
 
