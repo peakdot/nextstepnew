@@ -105,7 +105,7 @@ function insertUser($email, $password, $fname, $lname) {
 	if($id === false) {
 		return "Бүртгэлтэй хаяг байна.";
 	} 
-/*
+
 	// Email the new password to the person.
 	$message = "Сайн байна уу! ".$fname." ".$lname."<br>
 
@@ -117,8 +117,8 @@ function insertUser($email, $password, $fname, $lname) {
 	";
 
 	mail($email,"Бүртгэл баталгаажуулах",
-		$message, "From:Nextstep <you@example.com>");
-*/
+		$message, "From:Nextstep");
+
 	return login($email, $password);
 }
 
