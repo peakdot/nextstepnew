@@ -1,13 +1,13 @@
 <?php
 function uploadImage($file, $maxwidth, $maxheight, $destination) {
-    echo "4";
+    echo "4 ";
     $target_file_name = createNameforImage();
-    echo "5";
+    echo "5 ";
 
     //Get image type
     $imageFileType = trim(strtolower(pathinfo(basename($_FILES[$file]["name"]),PATHINFO_EXTENSION)));
     $target_file =$target_file_name.".".$imageFileType;
-    echo "6";
+    echo "6 ";
 
     // Check if image file is a actual image or fake image
     if(isset($_POST["submit"])) {
@@ -16,13 +16,13 @@ function uploadImage($file, $maxwidth, $maxheight, $destination) {
             return "picexterr";
         }
     }
-    echo "7";
+    echo "7 ";
 
     // Check if file already exists
     if (!file_exists($_FILES[$file]["tmp_name"])) {
         return "defaultjob.png";
     }
-    echo "8";
+    echo "8 ";
 
     // Check file size
     if ($_FILES[$file]["size"] > 50*1024*1024) {
@@ -38,13 +38,13 @@ function uploadImage($file, $maxwidth, $maxheight, $destination) {
         return "picexterr".$imageFileType;
     }
 
-    echo "9";
+    echo "9 ";
     // if everything is ok, try to upload file
     if (saveImage($_FILES[$file]["tmp_name"], $imageFileType, $maxwidth, $maxheight, $destination.$target_file)){
-    echo "10";
+    echo "10 ";
         return $target_file;
     } else {
-    echo "11";
+    echo "11 ";
         return "picincerr3";
     }
 }
@@ -62,12 +62,12 @@ function saveImage($source, $ext, $maxwidth, $maxheight, $destination) {
         $newheight = intval($ratio * $height);
         $size = min($width, $height);
     }
-    echo "12";
+    echo "12 ";
 
     $newImage = imagecreatetruecolor($newwidth, $newheight);
 
     $sourceImage = null;
-    echo "13";
+    echo "13 ";
 
     // Generate source image depending on file type
     switch ($ext) {
@@ -84,7 +84,7 @@ function saveImage($source, $ext, $maxwidth, $maxheight, $destination) {
         $sourceImage = imagecreatefrompng($source);
         break;
     }
-    echo "14";
+    echo "14 ";
 
     if ($sourceImage == false){
         return false;
@@ -93,7 +93,7 @@ function saveImage($source, $ext, $maxwidth, $maxheight, $destination) {
     if(imagecopyresampled($newImage, $sourceImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height)==false){
         return false;
     }
-    echo "15";
+    echo "15 ";
     
     // Output file depending on type
     switch ($ext) {
@@ -112,7 +112,7 @@ function saveImage($source, $ext, $maxwidth, $maxheight, $destination) {
         default: 
         return false;
     }
-    echo "16";
+    echo "16 ";
 
     if($res == false){
         return false;
@@ -129,7 +129,7 @@ function createNameforImage() {
     $rand = '';
     foreach (array_rand($seed, 30) as $k) $rand .= $seed[$k];   
     $date = Date("Y").Date("m").Date("d").Date("H").Date("i");
-    echo "17";
+    echo "17 ";
     $accpro = $date.'_'.$rand;
     return $accpro;
 }

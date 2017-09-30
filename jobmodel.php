@@ -48,14 +48,14 @@ function insertJob() {
 	$sun = get_input_ex("sun",0,true);
 	$week = (int)$mon*1+(int)$tue*2+(int)$wed*4+(int)$thu*8+(int)$fri*16+(int)$sat*32+(int)$sun*64;
 
-	echo "1";
+	echo "1 ";
 	$accpro = uploadImage("coverimg", 617, 160, "imgs/");
-	echo "2";
+	echo "2 ";
 
 	$data = array($jobName, $orgName, $accpro, $salaryType, $salary, $startTime, $endTime, $week, $lat, $lng, $email, $phone1, $phone2, $gender, $age, $edu, $regEmployer, $regCompany, $regType);
 
 	$id = insertToDB("jobs", array("_jobName", "_orgName", "_orgLogo", "_salaryType", "_salary", "_startTime", "_endTime", "_week", "_lat", "_lng", "_email", "_phone1", "_phone2", "_gender", "_age", "_edu", "_regEmployerId", "_regCompanyId", "_regType"), array($data));
-	echo "3";
+	echo "3 ";
 
 	if($id === false)
 		return "false".$accpro.$id;
