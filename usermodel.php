@@ -107,17 +107,16 @@ function insertUser($email, $password, $fname, $lname) {
 	} 
 
 	// Email the new password to the person.
-	$message = "Сайн байна уу! ".$fname." ".$lname."<br>
+	$message = "Сайн байна уу! ".$fname." ".$lname."
 
-	Та манай туршилтын туулай боллоо.<br>
+	Та манай туршилтын туулай боллоо.
 
-	Та манай сайтад дараах кодыг оруулж бүртгэлээ баталгаажуулна уу.<br>
+	Та манай сайтад дараах кодыг оруулж бүртгэлээ баталгаажуулна уу.
 
-	<a href='http://www.nextstep.mn/verify.php?userid=".$id."code=".createVerificationCode()."'><b></b></a>
-	";
+	http://www.nextstep.mn/verify.php?userid=".$id."code=".createVerificationCode();
 
 	mail($email,"Бүртгэл баталгаажуулах",
-		$message, "From:Nextstep");
+		$message, "From:Nextstep <peakdot1@nextstep.mn>");
 
 	return login($email, $password);
 }
