@@ -14,7 +14,6 @@ function showFilter(){
 }
 
 function setWeek(bindays, type) {
-	console.log(bindays);
 	if(bindays % 2 == 1) {
 		$("#"+type+"-mon").addClass("active");
 		bindays --;
@@ -22,7 +21,6 @@ function setWeek(bindays, type) {
 		$("#"+type+"-mon").removeClass("active");		
 	}
 	bindays = (bindays / 2);
-	console.log(bindays);
 
 	if(bindays % 2 == 1) {
 		$("#"+type+"-tue").addClass("active");
@@ -31,7 +29,6 @@ function setWeek(bindays, type) {
 		$("#"+type+"-tue").removeClass("active");		
 	}
 	bindays = (bindays / 2).toFixed(0);
-	console.log(bindays);
 
 	if(bindays % 2 == 1) {
 		$("#"+type+"-wed").addClass("active");
@@ -40,8 +37,6 @@ function setWeek(bindays, type) {
 		$("#"+type+"-wed").removeClass("active");		
 	}
 	bindays = (bindays / 2).toFixed(0);
-	console.log(bindays);
-
 	if(bindays % 2 == 1) {
 		$("#"+type+"-thu").addClass("active");
 		bindays --;
@@ -49,7 +44,6 @@ function setWeek(bindays, type) {
 		$("#"+type+"-thu").removeClass("active");		
 	}
 	bindays = (bindays / 2).toFixed(0);
-	console.log(bindays);
 
 	if(bindays % 2 == 1) {
 		$("#"+type+"-fri").addClass("active");
@@ -58,7 +52,6 @@ function setWeek(bindays, type) {
 		$("#"+type+"-fri").removeClass("active");		
 	}
 	bindays = (bindays / 2).toFixed(0);
-	console.log(bindays);
 
 	if(bindays % 2 == 1) {
 		$("#"+type+"-sat").addClass("active");
@@ -67,7 +60,6 @@ function setWeek(bindays, type) {
 		$("#"+type+"-sat").removeClass("active");		
 	}
 	bindays = (bindays / 2).toFixed(0);
-	console.log(bindays);
 
 	if(bindays % 2 == 1) {
 		$("#"+type+"-sun").addClass("active");

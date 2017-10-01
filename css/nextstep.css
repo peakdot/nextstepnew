@@ -769,7 +769,7 @@ nav .title span {
 
 .modal .body .header .headimg{
 	overflow: hidden;
-	height: 160px;
+	height: 250px;
 	max-width: 100%;
 	margin: 16px auto 16px auto;
 	display: flex;
@@ -920,7 +920,7 @@ nav .title span {
 }
 
 .gm-style .gm-style-iw {
-	width: 280px !important;
+	width: 250px !important;
 	top: 15px !important;
 	left: 20px !important;
 	background-color: #fff;
@@ -969,7 +969,7 @@ nav .title span {
 	display: block;
 	min-width: 300px;
 	max-width: 700px;
-	height: 200%;
+	height: auto;
 	background-color: white;
 	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16), 0 2px 6px 0 rgba(0, 0, 0, 0.12);
 }

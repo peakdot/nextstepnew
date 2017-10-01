@@ -23,12 +23,12 @@ if(!isset($_SESSION["usertype"]) || !isset($_SESSION["id"])) {
 
 	<nav>
 		<a href = "index.php" class = "title"><img src = "nextstepw.png" class = "logo"><span>Nextstep</span></a>
-		<a href = "#menu" class = "nav-item r min menu"><?php echo $userLogged? '<div class="circle"><img src="../../imgs/'.$_SESSION["accpro"].'"/></div>':'<i class = "material-icons md-36">account_circle</i>' ?></a>
+		<a href = "#menu" class = "nav-item r min menu"><?php echo $userLogged? '<div class="circle"><img src="imgs/'.$_SESSION["accpro"].'"/></div>':'<i class = "material-icons md-36">account_circle</i>' ?></a>
 		<?php 
 		if(!$userLogged) {
 			echo '<a href = "#login" class = "nav-item r modal-trigger"><i class = "material-icons md-36">account_circle</i><span>Нэвтрэх</span></a>';
 		} else {
-			echo '<a href = "#menu" class = "nav-item r menu"><div id = "profile-pic" class = "circle"><img src="../../imgs/'.$_SESSION["accpro"].'"/></div><span>'.$_SESSION["fname"].'</span></a>';
+			echo '<a href = "#menu" class = "nav-item r menu"><div id = "profile-pic" class = "circle"><img src="imgs/'.$_SESSION["accpro"].'"/></div><span>'.$_SESSION["fname"].'</span></a>';
 		}
 		?>
 		<a href = <?php echo $userLogged?'"#insert-job"':'"#login"'?> class = "nav-item r modal-trigger"><i class = "material-icons md-36">add</i><span>Зар нэмэх</span></a>
@@ -235,14 +235,8 @@ if(!isset($_SESSION["usertype"]) || !isset($_SESSION["id"])) {
 				<div class = "subheader">
 					<span>Холбоо барих</span>
 				</div>
-				<div class = "info-item">
+				<div class = "info-item" id = "jinfo-contact">
 					<i class = "material-icons md-24">phone</i><span id = "jinfo-phone1"></span>
-				</div>
-				<div class = "info-item">
-					<i class = "material-icons md-24"></i><span id = "jinfo-phone2"></span>
-				</div>
-				<div class = "info-item">
-					<i class = "material-icons md-24">email</i><span id = "jinfo-email"></span>
 				</div>
 				<div class = "subheader">
 					<span>Шаардлагууд</span>
@@ -530,7 +524,6 @@ if(!isset($_SESSION["usertype"]) || !isset($_SESSION["id"])) {
 
 		<div id = "list" class = "active">
 			<div class = "lists">
-			<span><?php print_r($_SESSION);?></span>
 			</div>
 		</div>
 	</div> 

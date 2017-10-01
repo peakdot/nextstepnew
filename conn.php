@@ -126,9 +126,9 @@ function editFromDB($tablename, $columnnames, $data, $condition = "1=1"){
 
 	foreach($columnnames as $i => $columnname) {
 		if($i == 0) {
-			$subquery .= $columnname."=".$data[$i];
+			$subquery .= $columnname."='".$data[$i]."'";
 		} else {
-			$subquery .= ",".$columnname."=".$data[$i];
+			$subquery .= ",".$columnname."='".$data[$i]."'";
 		}
 	}
 
@@ -138,7 +138,7 @@ function editFromDB($tablename, $columnnames, $data, $condition = "1=1"){
 		return true;
 	} else {
 		//Replace
-		die("Failed to retrieve data: ".$conn->error);
+		die("UPDATE ".$tablename." SET ".$subquery." WHERE ".$condition.", Failed to retrieve data from edit: ".$conn->error);
 	}
 }
 
@@ -148,7 +148,7 @@ function removeFromDB($tablename, $condition = "1=1"){
 	initcon();
 
 	if($result = $conn->query("DELETE FROM ".$tablename." WHERE ".$condition)){		
-		$result->close();
+		
 		closecon();
 
 		return true;

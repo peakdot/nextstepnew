@@ -3,6 +3,7 @@ session_start();
 
 require("conn.php");
 require("test_input.php");
+require("linktofb.php");
 
 if($_SERVER["REQUEST_METHOD"] == "GET") {
 	$t = get_input_get("t", 0, false);
@@ -57,6 +58,7 @@ function allowJob($id) {
 }
 
 function removeJob($id) {
+	removeFBPost(getFromDB("jobs", array("_fbpost_id"), "id=".$id)[0][0]);
 	if(removeFromDB("jobs", "id=".$id)){
 		return true;
 	} else {

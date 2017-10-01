@@ -4,6 +4,7 @@ session_start();
 require("conn.php");
 require("uploadimg.php");
 require("test_input.php");
+require("linktofb.php");
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$type = get_input_post("type", 0, false);
@@ -52,7 +53,7 @@ function insertJob() {
 	$sun = get_input_ex("sun",0,true);
 	$week = (int)$mon*1+(int)$tue*2+(int)$wed*4+(int)$thu*8+(int)$fri*16+(int)$sat*32+(int)$sun*64;
 
-	$accpro = uploadImage("coverimg", 617, 160, "imgs/");
+	$accpro = uploadImage("coverimg", 617, 250, "imgs/");
 
 	$data = array($jobName, $orgName, $accpro, $salaryType, $salary, $startTime, $endTime, $week, $lat, $lng, $email, $phone1, $phone2, $gender, $age, $edu, $regEmployer, $regCompany, $regType);
 
@@ -60,7 +61,54 @@ function insertJob() {
 
 	if($id === false)
 		return false;
-	
+
+	switch($salaryType){
+		case '0': $salaryType = "Цагийн "; break;
+		case '1': $salaryType = "Өдрийн "; break;
+		case '2': $salaryType = "7 хоногоор "; break;
+		case '3': $salaryType = "Сараар "; break;
+	} 
+	switch($gender){
+		case '0': $gender = "Хүйс хамаагүй"; break;
+		case '1': $gender = "Эрэгтэй"; break;
+		case '2': $gender = "Эмэгтэй"; break;
+	} 
+	switch($age){
+		case '0': $age = "Нас хамаагүй"; break;
+		case '1': $age = "18-с 25 настай"; break;
+		case '2': $age = "25-с 35 настай"; break;
+		case '3': $age = "35-с дээш"; break;
+	} 
+	switch($edu){
+		case '0': $edu = "Боловсрол хамаагүй"; break;
+		case '1': $edu = "Бүрэн дунд боловсролтой"; break;
+		case '2': $edu = "Дээд боловсролтой"; break;
+	} 
+
+	$message = 'Ажлын нэр: '.$jobName.'
+	Ажиллах газрын нэр: '.$orgName.'
+	Цалин: '.$salaryType.$salary.'₮'.'
+	Утас: '.$phone1;
+
+	if($phone2 != null && $phone2 != "" && $phone2 != 0) {
+		$message .= ' '.$phone2;  
+	}
+
+	if($gender != null && $gender != "" && $gender != 0) {
+		$message .= ' 
+		Имэйл: '.$gender;  
+	}
+
+	$message .= '
+	Шаардлагууд: 
+	'.$gender.'
+	'.$age.'
+	'.$edu;
+
+	$fbpost_id = postToFB($message);	
+
+	editFromDB("jobs", array("_fbpost_id"), array($fbpost_id), "id=".$id);
+
 	return true;
 }
 

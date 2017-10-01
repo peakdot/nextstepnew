@@ -56,7 +56,7 @@ function loadMarkers(job_big_array, userType){
     var len = job_big_array.length;
 
     for(var i = 0; i < len; i++) {
-        var html_part1 = '<div class="mapiw"><div class="mapiwtext">' +job_big_array[i][0] + '<br/>' + job_big_array[i][1] + '<br/><b>Цалин: <b/>' + job_big_array[i][4] + ' ' + job_big_array[i][5] + '<br/><b>Бүртгэсэн огноо: <b/>'+job_big_array[i]["_regDate"] + '<br/></div>';
+        var html_part1 = '<div class="mapiw"><b><div class="mapiwtext">' +job_big_array[i][1] + '<br/>' + job_big_array[i][2] + '<br/>' + job_big_array[i][4] + ' ' + job_big_array[i][5] + '₮<br/>'+job_big_array[i][8] + '<br/><b/></div>';
 
         if(userType == 0) {
             var html_part2 ='<a href="#!" onclick="loadJob(' + job_big_array[i][0] + ');" class="button flat modal-trigger">Дэлгэрэнгүй</a><a href="#!" onclick="saveJob(' + job_big_array[i][0] + ');" class="button flat">Хадгалах</a></div>';

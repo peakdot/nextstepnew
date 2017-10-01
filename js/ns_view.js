@@ -54,15 +54,12 @@ function initialize(userType = 0) {
 		menu_content = $(href);
 		overlay.addClass('active');
 		overlay.click(function(){
-			console.log(href);
 			close_menu(href);
 		});
 
 		var offset = clicked_obj.offset();
 		var offset_top = offset.top + clicked_obj.outerHeight()/2;
 		var offset_left = offset.left + clicked_obj.outerWidth()/2;
-		console.log(offset_left);
-		console.log(offset_top);
 
 		if(offset_left + menu_content.outerWidth() < $(window).width()){
 			menu_content.css("right","");
@@ -452,9 +449,8 @@ function getJobsBriefData(userType = 0) {
 	// Callback handler that will be called on success
 	jobview_request.done(function (response, textStatus, jqXHR){
 		if(response != "" && response != null) {
-			console.log(response);
 			jobs = JSON.parse(response);
-			loadList(jobs, userType);
+			addToList(jobs, userType);
 		}
 	});
 
@@ -465,7 +461,7 @@ function getJobsBriefData(userType = 0) {
 	});
 }
 
-function loadList(job_big_array, userType){
+function addToList(job_big_array, userType){
 	var list = $("#list .lists");
 	var len = job_big_array.length;
 
@@ -476,7 +472,7 @@ function loadList(job_big_array, userType){
 			case '2': job_big_array[i][4] = "7 хоногоор"; break;
 			case '3': job_big_array[i][4] = "Сараар"; break;
 		} 
-		var job_part1 = '<div class = "list-item"><a href = "#!" class = "head"><div class = "imgcontainer"><img src = "imgs/' + job_big_array[i][3] + '"></div></a><div class = "body"><a href = "#!" class = "header">Ажлын нэр: ' + job_big_array[i][1] + '</a><p>Ажиллах газрын нэр: ' + job_big_array[i][2] + '</p><p>' + job_big_array[i][4] + " " + job_big_array[i][5] + "₮</p>"+'</div>';
+		var job_part1 = '<div class = "list-item"><a href = "watch.php?id=' + job_big_array[i][0] + '" class = "head"><div class = "imgcontainer"><img src = "imgs/' + job_big_array[i][3] + '"></div></a><div class = "body"><a href = "watch.php?id=' + job_big_array[i][0] + '" class = "header">Ажлын нэр: ' + job_big_array[i][1] + '</a><p>Ажиллах газрын нэр: ' + job_big_array[i][2] + '</p><p>' + job_big_array[i][4] + " " + job_big_array[i][5] + "₮</p><p>" + job_big_array[i][8]+ '</p></div>';
 
 		if(userType == 0) {
 			var job_part2 = '<a href = "#!" class = "list-item-save" onclick = saveJob(' + job_big_array[i][0] + ')><span>Хадгалах</span><i class = "material-icons md-36">save</i></a><a href = "#!" class = "list-item-detail" onclick = "loadJob(' + job_big_array[i][0] + ')"><span>Дэлгэрэнгүй</span><i class = "material-icons md-36">fullscreen</i></a></div>';
@@ -543,7 +539,7 @@ function removeJob(id) {
 	jobview_request.done(function (response, textStatus, jqXHR){
 		if(response != "" && response != null) {
 			console.log(response);
-			location.reload();
+			//location.reload();
 		}
 	});
 
@@ -580,15 +576,20 @@ function feed_job_info_modal(job) {
 	jobinfo_modal = $("#job-info");
 	jobinfo_modal.find("#jinfo-jobName").html(job[1]);
 	jobinfo_modal.find("#jinfo-orgName").html(job[2]);
-	jobinfo_modal.find("#jinfo-orgLogo").attr("src", "../../imgs/" + job[3]);
+	jobinfo_modal.find("#jinfo-orgLogo").attr("src", "imgs/" + job[3]);
 	jobinfo_modal.find("#jinfo-salary").html(job[4] + " " + job[5]);
 	setclockstart(parseInt(job[6]), "info");
 	setclockend(parseInt(job[7]), "info");
 	setWeek(job[8],"jinfo");
 	jobinfo_modal.find("#jinfo-email").html(job[9]);
 	jobinfo_modal.find("#jinfo-phone1").html(job[10]);
-	jobinfo_modal.find("#jinfo-phone2").html(job[11]);
-	jobinfo_modal.find("#jinfo-gender").html(job[12]);
+	jinfo_contact = jobinfo_modal.find("#jinfo-contact");
+	if(job[11] != 0 && job[11] != null){
+		jinfo_contact.append('<div class = "info-item"><i class = "material-icons md-24"></i><span id = "jinfo-phone2">'+job[11]+'</span></div>');
+	}
+	if(job[11] != 0 && job[11] != null){
+		jinfo_contact.append('<div class = "info-item"><i class = "material-icons md-24">email</i><span id = "jinfo-email">'+job[12]+'</span></div>');
+	}
 	jobinfo_modal.find("#jinfo-age").html(job[13]);
 	jobinfo_modal.find("#jinfo-edu").html(job[14]);
 
