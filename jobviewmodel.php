@@ -39,7 +39,7 @@ function getAllBriefJobInfos() {
 	if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"]) {
 		$res = getFromDB("jobs", array("id", "_jobName", "_orgName", "_orgLogo", "_salaryType", "_salary", "_lat", "_lng", "_regDate"), "_isAllowed = false");
 	} else {
-		$res = getFromDB("jobs", array("id", "_jobName", "_orgName", "_orgLogo", "_salaryType", "_salary", "_lat", "_lng", "_regDate"), "_isAllowed = true");
+		$res = getFromDB("jobs", array("id", "_jobName", "_orgName", "_orgLogo", "_salaryType", "_salary", "_lat", "_lng", "_regDate"));
 	}
 	return $res;
 }
