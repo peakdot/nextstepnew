@@ -41,7 +41,7 @@ function getLoginInfoFromUser(){
 }
 
 function login($email, $password){
-	$password = hash('sha512', $password);
+	$password = hash('sha512', $password."Xoxo");
 	//User login
 	$res1 = getFromDBSecure("ns_users", array("id", "_fname", "_lname", "_email", "_phone", "_accpro", "_isAdmin"), array("_email", "_password"), "_email = ? and _password = ?", array($email, $password));
 	//Company login
@@ -57,25 +57,25 @@ function login($email, $password){
 
 	if($type == 0) {
 		$_SESSION["usertype"] = $type;
-		$_SESSION["id"] = $res1[0][0];
-		$_SESSION["fname"] = $res1[0][1];
-		$_SESSION["lname"] = $res1[0][2];
-		$_SESSION["email"] = $res1[0][3];
-		$_SESSION["phone"] = $res1[0][4];
-		$_SESSION["accpro"] = $res1[0][5];
-		if($res1[0][6]=='1') {
+		$_SESSION["id"] = $res1[0]["id"];
+		$_SESSION["fname"] = $res1[0]["_fname"];
+		$_SESSION["lname"] = $res1[0]["_lname"];
+		$_SESSION["email"] = $res1[0]["_email"];
+		$_SESSION["phone"] = $res1[0]["_phone"];
+		$_SESSION["accpro"] = $res1[0]["_accpro"];
+		if($res1[0]["_isAdmin"]=='1') {
 			$_SESSION["isAdmin"] = 1;
 		} else {
 			$_SESSION["isAdmin"] = 0;
 		}
 	} else {
 		$_SESSION["usertype"] = $type;
-		$_SESSION["id"] = $res2[0][0];
-		$_SESSION["name"] = $res2[0][1];
-		$_SESSION["email"] = $res2[0][2];
-		$_SESSION["phone1"] = $res2[0][3];
-		$_SESSION["phone2"] = $res2[0][4];
-		$_SESSION["accpro"] = $res2[0][5];
+		$_SESSION["id"] = $res2[0]["id"];
+		$_SESSION["name"] = $res2[0]["_name"];
+		$_SESSION["email"] = $res2[0]["_email"];
+		$_SESSION["phone1"] = $res2[0]["_phone1"];
+		$_SESSION["phone2"] = $res2[0]["_phone2"];
+		$_SESSION["accpro"] = $res2[0]["_logo"];
 		$_SESSION["isAdmin"] = 0;
 	}
 
@@ -83,29 +83,15 @@ function login($email, $password){
 
 }
 
-function getSignUpInfoFromUser() {
-	$email = get_input_post("email", 1, false);
-	$password = get_input_post("password", 1, false);
-	$repassword = get_input_post("repassword", 1, false);
-	$fname = get_input_post("fname", 1, false);
-	$lname = get_input_post("lname", 1, false);
-
-	if($password !== $repassword) {
-		die("Оруулсан нууц үгүүд өөр байна.");
-	} 
-
-	return array($email, $password, $fname, $lname);
-}
-
 function insertUser($email, $password, $fname, $lname) {
-	$data = array($email, hash('sha512', $password), $fname, $lname);
+	$data = array($email, hash('sha512', $password."Xoxo"), $fname, $lname);
 
 	$id = insertToDB("ns_users", array("_email", "_password", "_fname", "_lname"), array($data));
 
 	if($id === false) {
 		return "Бүртгэлтэй хаяг байна.";
 	} 
-/*
+
 	// Email the new password to the person.
 	$message = "Сайн байна уу! ".$fname." ".$lname."
 
@@ -117,7 +103,7 @@ function insertUser($email, $password, $fname, $lname) {
 
 	mail($email,"Бүртгэл баталгаажуулах",
 		$message, "From:Nextstep <peakdot1@gmail.com>");
-*/
+
 	return login($email, $password);
 }
 

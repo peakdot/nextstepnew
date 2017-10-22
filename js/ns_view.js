@@ -466,18 +466,18 @@ function addToList(job_big_array, userType){
 	var len = job_big_array.length;
 
 	for(var i = 0; i < len; i++) {
-		switch(job_big_array[i][4]){
-			case '0': job_big_array[i][4] = "Цагийн"; break;
-			case '1': job_big_array[i][4] = "Өдрийн"; break;
-			case '2': job_big_array[i][4] = "7 хоногоор"; break;
-			case '3': job_big_array[i][4] = "Сараар"; break;
+		switch(job_big_array[i]["_salaryType"]){
+			case '0': job_big_array[i]["_salaryType"] = "Цагийн"; break;
+			case '1': job_big_array[i]["_salaryType"] = "Өдрийн"; break;
+			case '2': job_big_array[i]["_salaryType"] = "7 хоногоор"; break;
+			case '3': job_big_array[i]["_salaryType"] = "Сараар"; break;
 		} 
-		var job_part1 = '<div class = "list-item"><a href = "watch.php?id=' + job_big_array[i][0] + '" class = "head"><div class = "imgcontainer"><img src = "imgs/' + job_big_array[i][3] + '"></div></a><div class = "body"><a href = "watch.php?id=' + job_big_array[i][0] + '" class = "header">Ажлын нэр: ' + job_big_array[i][1] + '</a><p>Ажиллах газрын нэр: ' + job_big_array[i][2] + '</p><p>' + job_big_array[i][4] + " " + job_big_array[i][5] + "₮</p><p>" + job_big_array[i][8]+ '</p></div>';
+		var job_part1 = '<div class = "list-item"><a href = "watch.php?id=' + job_big_array[i]["id"] + '" class = "head"><div class = "imgcontainer"><img src = "imgs/' + job_big_array[i]["_orgLogo"] + '"></div></a><div class = "body"><a href = "watch.php?id=' + job_big_array[i]["id"] + '" class = "header">' + job_big_array[i]["_jobName"] + '</a><p>Ажиллах газрын нэр: ' + job_big_array[i]["_orgName"] + '</p><p>' + job_big_array[i]["_salaryType"] + " " + job_big_array[i]["_salary"] + "₮</p><p>" + job_big_array[i]["_regDate"]+ '</p></div>';
 
 		if(userType == 0) {
-			var job_part2 = '<a href = "#!" class = "list-item-save" onclick = saveJob(' + job_big_array[i][0] + ')><span>Хадгалах</span><i class = "material-icons md-36">save</i></a><a href = "#!" class = "list-item-detail" onclick = "loadJob(' + job_big_array[i][0] + ')"><span>Дэлгэрэнгүй</span><i class = "material-icons md-36">fullscreen</i></a></div>';
+			var job_part2 = '<a href = "#!" class = "list-item-save" onclick = saveJob(' + job_big_array[i]["id"] + ')><span>Хадгалах</span><i class = "material-icons md-36">save</i></a><a href = "#!" class = "list-item-detail" onclick = "loadJob(' + job_big_array[i]["id"] + ')"><span>Дэлгэрэнгүй</span><i class = "material-icons md-36">fullscreen</i></a></div>';
 		} else if(userType == 1) {
-			var job_part2 = '<a href = "#!" class = "list-item-save" onclick = addJob(' + job_big_array[i][0] + ')><span>Хадгалах</span><i class = "material-icons md-36">save</i></a><a href = "#!" class = "list-item-detail" onclick = "loadJob(' + job_big_array[i][0] + ')"><span>Дэлгэрэнгүй</span><i class = "material-icons md-36">fullscreen</i></a><a href = "#!" class = "list-item-remove"  onclick = "removeJob(' + job_big_array[i][0] + ')"><span>Устгах</span><i class="material-icons md-36">delete_forever</i></a></div>';
+			var job_part2 = '<a href = "#!" class = "list-item-save" onclick = addJob(' + job_big_array[i]["id"] + ')><span>Хадгалах</span><i class = "material-icons md-36">save</i></a><a href = "#!" class = "list-item-detail" onclick = "loadJob(' + job_big_array[i]["id"] + ')"><span>Дэлгэрэнгүй</span><i class = "material-icons md-36">fullscreen</i></a><a href = "#!" class = "list-item-remove"  onclick = "removeJob(' + job_big_array[i]["id"] + ')"><span>Устгах</span><i class="material-icons md-36">delete_forever</i></a></div>';
 		}
 
 		list.prepend(job_part1 + job_part2);
@@ -495,6 +495,7 @@ function loadJob(id) {
 	jobview_request.done(function (response, textStatus, jqXHR){
 		if(response != "" && response != null) {
 			job = JSON.parse(response);
+			console.log(response);
 			feed_job_info_modal(job[0]);
 		}
 	});
@@ -551,47 +552,52 @@ function removeJob(id) {
 }
 
 function feed_job_info_modal(job) {
-	switch(job[4]){
-		case 0: job[4] = "Цагийн"; break;
-		case 1: job[4] = "Өдрийн"; break;
-		case 2: job[4] = "7 хоногоор"; break;
-		case 3: job[4] = "Сараар"; break;
+	switch(job["_salaryType"]){
+		case 0: job["_salaryType"] = "Цагийн"; break;
+		case 1: job["_salaryType"] = "Өдрийн"; break;
+		case 2: job["_salaryType"] = "7 хоногоор"; break;
+		case 3: job["_salaryType"] = "Сараар"; break;
 	} 
-	switch(job[12]){
-		case 0: job[12] = "Хүйс хамаагүй"; break;
-		case 1: job[12] = "Эрэгтэй"; break;
-		case 2: job[12] = "Эмэгтэй"; break;
+	switch(job["_gender"]){
+		case 0: job["_gender"] = "Хүйс хамаагүй"; break;
+		case 1: job["_gender"] = "Эрэгтэй"; break;
+		case 2: job["_gender"] = "Эмэгтэй"; break;
 	} 
-	switch(job[13]){
-		case 0: job[13] = "Нас хамаагүй"; break;
-		case 1: job[13] = "18-с 25 настай"; break;
-		case 2: job[13] = "25-с 35 настай"; break;
-		case 3: job[13] = "35-с дээш"; break;
+	switch(job["_age"]){
+		case 0: job["_age"] = "Нас хамаагүй"; break;
+		case 1: job["_age"] = "18-с 25 настай"; break;
+		case 2: job["_age"] = "25-с 35 настай"; break;
+		case 3: job["_age"] = "35-с дээш"; break;
 	} 
-	switch(job[14]){
-		case 0: job[14] = "Боловсрол хамаагүй"; break;
-		case 1: job[14] = "Бүрэн дунд боловсролтой"; break;
-		case 2: job[14] = "Дээд боловсролтой"; break;
+	switch(job["_edu"]){
+		case 0: job["_edu"] = "Боловсрол хамаагүй"; break;
+		case 1: job["_edu"] = "Бүрэн дунд боловсролтой"; break;
+		case 2: job["_edu"] = "Дээд боловсролтой"; break;
 	} 
 	jobinfo_modal = $("#job-info");
-	jobinfo_modal.find("#jinfo-jobName").html(job[1]);
-	jobinfo_modal.find("#jinfo-orgName").html(job[2]);
-	jobinfo_modal.find("#jinfo-orgLogo").attr("src", "imgs/" + job[3]);
-	jobinfo_modal.find("#jinfo-salary").html(job[4] + " " + job[5]);
-	setclockstart(parseInt(job[6]), "info");
-	setclockend(parseInt(job[7]), "info");
-	setWeek(job[8],"jinfo");
-	jobinfo_modal.find("#jinfo-email").html(job[9]);
-	jobinfo_modal.find("#jinfo-phone1").html(job[10]);
+	jobinfo_modal.find("#jinfo-jobName").html(job["_jobName"]);
+	jobinfo_modal.find("#jinfo-orgName").html(job["_orgName"]);
+	jobinfo_modal.find("#jinfo-orgLogo").attr("src", "imgs/" + job["_orgLogo"]);
+	jobinfo_modal.find("#jinfo-salary").html(job["_salaryType"] + " " + job["_salary"]);
+	setclockstart(parseInt(job["_startTime"]), "info");
+	setclockend(parseInt(job["_endTime"]), "info");
+	setWeek(job["_week"],"jinfo");
+	jobinfo_modal.find("#jinfo-phone1").html(job["_phone1"]);
 	jinfo_contact = jobinfo_modal.find("#jinfo-contact");
-	if(job[11] != 0 && job[11] != null){
-		jinfo_contact.append('<div class = "info-item"><i class = "material-icons md-24"></i><span id = "jinfo-phone2">'+job[11]+'</span></div>');
+	if(job["_email"] != 0 && job["_email"] != null){
+		jobinfo_modal.find("#jinfo-email").html(job["_email"]);
+		jobinfo_modal.find("#jinfo-email").parent().css("display", "block");
+	} else {
+		jobinfo_modal.find("#jinfo-email").parent().css("display", "none");
 	}
-	if(job[11] != 0 && job[11] != null){
-		jinfo_contact.append('<div class = "info-item"><i class = "material-icons md-24">email</i><span id = "jinfo-email">'+job[12]+'</span></div>');
+	if(job["_phone2"] != 0 && job["_phone2"] != null){
+		jobinfo_modal.find("#jinfo-phone2").html(job["_phone2"]);
+		jobinfo_modal.find("#jinfo-phone2").parent().css("display", "block");
+	} else {
+		jobinfo_modal.find("#jinfo-phone2").parent().css("display", "none");
 	}
-	jobinfo_modal.find("#jinfo-age").html(job[13]);
-	jobinfo_modal.find("#jinfo-edu").html(job[14]);
+	jobinfo_modal.find("#jinfo-age").html(job["_age"]);
+	jobinfo_modal.find("#jinfo-edu").html(job["_edu"]);
 
 	open_modal("#job-info");
 }

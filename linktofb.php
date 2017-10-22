@@ -3,7 +3,8 @@ define('FACEBOOK_SDK_V4_SRC_DIR', 'facebook/');
 require_once('facebook/autoload.php');
 
 //Returns post id
-function postToFB($message) {
+function postToFB($message, $imgpath) {
+	$imgpath = '/'.$imgpath;
 
 	$fb = new Facebook\Facebook([
 		'app_id' => '791155091056398',
@@ -11,12 +12,14 @@ function postToFB($message) {
 		'default_graph_version' => 'v2.10',
 		'default_access_token' => 'EAALPjSYqJw4BAGCFQfvhAApzpJrgmmx4n1tW1GriW0GhyNpAoIBdsZAGdFfrO5hvfiHejzD7bYvOU7dt0rvK9Kn5czEe9hriwn4SNOxTKrnPrWwEsPmN9NKwjFWwwAeBEapGSaEEW03dsSUahevAaAn8KSluk9TlOHdB2GNhF1iEGszvB'
 		]);
+	echo $imgpath;
 
 	//Post property to Facebook
 	$linkData = [
-	'link' => 'www.nextstep.mn',
-	'message' => $message
+	'message' => $message,
+	'source' => $fb->fileToUpload($imgpath)
 	];
+
 
 	try {
 		$response = $fb->post('/me/feed', $linkData);

@@ -106,7 +106,7 @@ if(!isset($_SESSION["usertype"]) || !isset($_SESSION["id"])) {
 		<?php 
 		echo $userLogged?'<li><a href = "#userinfo" class = "modal-trigger"><i class = "material-icons md-36">settings</i>Тохиргоо</a></li>
 		<li><a href = "#logout" class = "modal-trigger logout"><i class = "material-icons md-36">exit_to_app</i>Гарах</a></li>':'<li><a href = "#login" class = "modal-trigger"><i class = "material-icons md-36">person_outline</i>Нэвтрэх</a></li>
-		<li><a href = "#signup" class = "modal-trigger"><i class = "material-icons md-36"><i class="material-icons">person_add</i></i>Бүртгүүлэх</a></li>';
+		<li><a href = "#signup" class = "modal-trigger"><i class = "material-icons md-36">person_add</i>Бүртгүүлэх</a></li>';
 		?>
 	</ul>
 
@@ -237,6 +237,12 @@ if(!isset($_SESSION["usertype"]) || !isset($_SESSION["id"])) {
 				</div>
 				<div class = "info-item" id = "jinfo-contact">
 					<i class = "material-icons md-24">phone</i><span id = "jinfo-phone1"></span>
+				</div>
+				<div class = "info-item">
+					<i class = "material-icons md-24"></i><span id = "jinfo-phone2"></span>
+				</div>
+				<div class = "info-item">
+					<i class = "material-icons md-24">email</i><span id = "jinfo-email"></span>
 				</div>
 				<div class = "subheader">
 					<span>Шаардлагууд</span>

@@ -2,7 +2,7 @@
 session_start();
 
 require("conn.php");
-require("uploadimg.php");
+require("imagemodel.php");
 require("test_input.php");
 require("linktofb.php");
 
@@ -85,9 +85,11 @@ function insertJob() {
 		case '2': $edu = "Дээд боловсролтой"; break;
 	} 
 
-	$message = 'Ажлын нэр: '.$jobName.'
+	$message = $jobName.'
 	Ажиллах газрын нэр: '.$orgName.'
+
 	Цалин: '.$salaryType.$salary.'₮'.'
+
 	Утас: '.$phone1;
 
 	if($phone2 != null && $phone2 != "" && $phone2 != 0) {
@@ -96,37 +98,30 @@ function insertJob() {
 
 	if($gender != null && $gender != "" && $gender != 0) {
 		$message .= ' 
+
 		Имэйл: '.$gender;  
 	}
 
 	$message .= '
+
 	Шаардлагууд: 
 	'.$gender.'
 	'.$age.'
 	'.$edu;
 
-	$fbpost_id = postToFB($message);	
+	$message .= '
+
+	Линк: www.nextstep.mn/watch?id='.$id;
+
+	$temppath = createJobImage($message);
+
+	$fbpost_id = postToFB($message, $temppath);	
 
 	editFromDB("jobs", array("_fbpost_id"), array($fbpost_id), "id=".$id);
 
+	unlink($temppath);
+
 	return true;
-}
-
-function create_image(){
-        $im = @imagecreate(200, 200)or die("Cannot Initialize new GD image stream");
-        $background_color = imagecolorallocate($im, 255, 255, 0);  // yellow
-        $red = imagecolorallocate($im, 255, 0, 0);      // red
-
-        imagestring($im, 1, 5,  10, "Hello !", $red);
-        imagestring($im, 2, 5,  50, "Hello !", $red);
-        imagestring($im, 3, 5,  90, "Hello !", $red);
-        imagestring($im, 4, 5, 130, "Hello !", $red);
-        imagestring($im, 5, 5, 170, "Hello !", $red);
-
-        imagestringup($im, 5, 140, 150, "Hello !", $red);
-
-        imagepng($im,"image.png");
-        imagedestroy($im);
 }
 
 ?>

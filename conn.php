@@ -105,7 +105,7 @@ function &getFromDB($tablename, $columnnames, $condition = "1=1"){
 	$subquery = implode(",", $columnnames);
 
 	if($result = $conn->query("SELECT ".$subquery." FROM ".$tablename." WHERE ".$condition)){
-		$res = $result->fetch_all(MYSQLI_NUM); 
+		$res = $result->fetch_all(MYSQLI_ASSOC); 
 		
 		$result->close();
 		closecon();
@@ -205,7 +205,7 @@ function &getFromDBSecure($tablename, $columnnames, $inConditionColumnnames, $co
 
 	$result = $stmt->get_result();
 
-	$res = $result->fetch_all(MYSQLI_NUM);
+	$res = $result->fetch_all(MYSQLI_ASSOC);
 
 	$result->close();
 	$stmt->close();
