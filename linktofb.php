@@ -13,6 +13,7 @@ function postToFB($message, $imgpath) {
 		]);
 	echo $imgpath;
 	$img = $fb->fileToUpload($imgpath);
+	echo "13 ";
 
 	//Post property to Facebook
 	$linkData = [
