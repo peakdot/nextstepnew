@@ -114,12 +114,20 @@ function insertJob() {
 	Линк: www.nextstep.mn/watch?id='.$id;
 
 	$temppath = createJobImage($message);
+    echo "12 ";
+
 
 	$fbpost_id = postToFB($message, $temppath);	
+    echo "13 ";
+
 
 	editFromDB("jobs", array("_fbpost_id"), array($fbpost_id), "id=".$id);
+    echo "14 ";
+
 
 	unlink($temppath);
+    echo "15 ";
+
 
 	return true;
 }

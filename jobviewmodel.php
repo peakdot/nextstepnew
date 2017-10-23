@@ -58,7 +58,9 @@ function allowJob($id) {
 }
 
 function removeJob($id) {
-	removeFBPost(getFromDB("jobs", array("_fbpost_id"), "id=".$id)[0]["_fbpost_id"]);
+	$res = getFromDBSecure("jobs", array("_fbpost_id", "_orgLogo"), "id=".$id)[0]
+	unlink($res["_orgLogo"]);
+	removeFBPost($res["_fbpost_id"]);
 	if(removeFromDB("jobs", "id=".$id)){
 		return true;
 	} else {

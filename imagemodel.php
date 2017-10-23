@@ -125,31 +125,53 @@ function createNameforImage() {
 function createJobImage($message) {
     $stamp = imagecreatefrompng('nextstepg.png');
 
+    echo "1 ";
+
     $marge_right = 10;
     $marge_bottom = 10;
     $sx = imagesx($stamp);
     $sy = imagesy($stamp);
+    echo "2 ";
+
 
     $im = imagecreatetruecolor(600, 600);
     $white = imagecolorallocate($im, 0xFF, 0xFF, 0xFF);
     $black = imagecolorallocate($im, 0x00, 0x00, 0x00);
+    echo "3 ";
+
 
     // Make the background white
     imagefilledrectangle($im, 0, 0, 600, 600, $white);
+    echo "4 ";
+
 
     imagecopymerge_alpha($im, $stamp, imagesx($im) - $sx - $marge_right, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($stamp), imagesy($stamp), 50);
+    echo "5 ";
+
 
     // Path to our ttf font file
     $font_file = 'fonts/roboto/Roboto-Regular.ttf';
+    echo "6 ";
+
 
     $xposition = 55;
+    echo "7 ";
+
 
     imagefttext($im, 18, 0, 50, $xposition, $black, $font_file, $message);
+    echo "8 ";
+
 
     $temppath = '/temp/'.createNameforImage().'.png';
+    echo "9 ";
+
     echo $temppath;
     imagepng($im, $temppath);
+    echo "10 ";
+
     imagedestroy($im);
+    echo "11 ";
+
 
     return $temppath;
 }
