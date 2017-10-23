@@ -4,7 +4,6 @@ require_once('facebook/autoload.php');
 
 //Returns post id
 function postToFB($message, $imgpath) {
-	$imgpath = '/'.$imgpath;
 
 	$fb = new Facebook\Facebook([
 		'app_id' => '791155091056398',
@@ -13,16 +12,17 @@ function postToFB($message, $imgpath) {
 		'default_access_token' => 'EAALPjSYqJw4BAGCFQfvhAApzpJrgmmx4n1tW1GriW0GhyNpAoIBdsZAGdFfrO5hvfiHejzD7bYvOU7dt0rvK9Kn5czEe9hriwn4SNOxTKrnPrWwEsPmN9NKwjFWwwAeBEapGSaEEW03dsSUahevAaAn8KSluk9TlOHdB2GNhF1iEGszvB'
 		]);
 	echo $imgpath;
+	$img = $fb->fileToUpload($imgpath);
 
 	//Post property to Facebook
 	$linkData = [
 	'message' => $message,
-	'source' => $fb->fileToUpload($imgpath)
+	'source' => $img
 	];
 
 
 	try {
-		$response = $fb->post('/me/feed', $linkData);
+		$response = $fb->post('/me/photos', $linkData);
 	} catch(Facebook\Exceptions\FacebookResponseException $e) {
 		echo 'Graph returned an error: '.$e->getMessage();
 		exit;

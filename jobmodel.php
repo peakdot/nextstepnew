@@ -85,7 +85,7 @@ function insertJob() {
 		case '2': $edu = "Дээд боловсролтой"; break;
 	} 
 
-	$message = $jobName.'
+	$message = 'Ажлын нэр: '.$jobName.'
 	Ажиллах газрын нэр: '.$orgName.'
 
 	Цалин: '.$salaryType.$salary.'₮'.'

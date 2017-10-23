@@ -146,7 +146,7 @@ function createJobImage($message) {
 
     imagefttext($im, 18, 0, 50, $xposition, $black, $font_file, $message);
 
-    $temppath = 'temp/'.createNameforImage().'.png';
+    $temppath = '/temp/'.createNameforImage().'.png';
     echo $temppath;
     imagepng($im, $temppath);
     imagedestroy($im);
